@@ -1,15 +1,16 @@
-import TableData from './components/TableData'
-import API from "../src/utils/API"
+import Header from "./components/Header"
+import Container from "./components/Container"
+import Table from "./components/Table"
 
 
 
 function App() {
   return (
     <div >
-      <TableData>
-
-      </TableData>
-    
+      {/* <Container> */}
+        <Header/>
+        <Table/>
+      {/* </Container> */}
     </div>
   );
 }

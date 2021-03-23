@@ -1,10 +1,13 @@
 #table {
-    width: 100%;
+    width: 90%;
     text-align: center;
-    border: solid grey 2px;
+    border: solid #808080 2px;
     border-radius: 3px;
-
+    margin-left: auto;
+    margin-right:auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 
 th {
     font-weight: bold;
