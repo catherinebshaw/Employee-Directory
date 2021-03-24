@@ -1,6 +1,5 @@
-import Header from "./components/Header"
 import Container from "./components/Container"
-import Table from "./components/Table"
+import TableData from "./components/TableData"
 
 
 
@@ -8,8 +7,7 @@ function App() {
   return (
     <div >
       {/* <Container> */}
-        <Header/>
-        <Table/>
+        <TableData/>
       {/* </Container> */}
     </div>
   );

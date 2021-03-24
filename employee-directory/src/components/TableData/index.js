@@ -7,19 +7,18 @@ function TableData(){
     const [employee, setEmployee] = useState({});
     const [employees, setEmployees] = useState([]);
     const [employeeIndex, setEmployeeIndex] = useState(0)
-    const [order,setOrder] = useState('descend'); 
+    const [order,setOrder] = useState('desc'); 
     const inputRef = useRef()
     
     function getEmployees(){
     API.fetchEmployees()
     .then(employees => {
     setEmployees(employees);
-    setEmployee(employees[0]);
         })
         .catch(err => console.log(err));
     }
     
-    function sortEmployees(){
+    function sortEmployee(){
         let newList = [ ...employees, ]
         newList.sort((a, b) => {
             let fa = a.firstName.toLowerCase(),
@@ -32,49 +31,67 @@ function TableData(){
             }
             return 0; 
         })
+        if( order === 'desc' ) {
+            setOrder('asc') 
+        newList.reverse()
+        } else {
+            setOrder('desc')
+        }
         setEmployees(newList);
-    }
+    } 
 
-    function filterEmployees(country){
+    function filterEmployee(country){
         console.log(`the employees`, employees)
         const myInput = inputRef.current.value
         const newList = employees.filter( employee => employee.country.indexOf( myInput )> -1 )
-        //  let newList = employees.filter( employee=>employee.country === {myInput} )
         console.log(`this is the part that broke it all `, newList)
         setEmployees(newList);
+    
     }
-    // function setOrder => (a,b){
-    //     if(a[firstName] <b [firstName])
 
-    // } 
-
-       
+    function clearSearch(){
+        document.querySelector("#country").value = "Enter Country";
+        getEmployees()
+    }
       
     useEffect(() => {
         getEmployees();
     }, []);
     
-
     return (
         <>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" ref={inputRef} placeholder="Enter country"/>
-                <button class="btn btn-outline-primary"  onClick={()=>filterEmployees(inputRef.current.value)} type="button" id="button-addon2">Search</button>
-            </div>
-            <button class="btn btn-secondary" onClick={sortEmployees}>
-            Sort Employees
-            </button>
-            <tbody>
-                {employees.map(employee => (
-                <tr >   
-                <td>{employee.firstName} {employee.lastName}</td>
-                <td><img alt={employee.image} src={employee.image}/></td>
-                <td>{employee.country}</td>
-                <td>{employee.email}</td>
-                <td>{employee.gender}</td>
-                </tr>))}
-            </tbody>
-            
+            <header>
+                <h1>Employee Directory</h1>
+                    <p>Click on 'Name' to sort alphabetically</p>
+                    <div class="input-group mb-3">
+                        <label for="countrySearch" class="form-label">Search by Country:</label>
+                        <input id="country" type="text" class="form-control" ref={inputRef} placeholder="Enter Country"/>
+                        <button class="btn btn-outline-primary"  onClick={()=>filterEmployee(inputRef.current.value)} type="button" id="button-addon2">Search</button>
+                        <button class="btn btn-outline-primary"  onClick={()=>clearSearch()} type="button" id="button-addon2">Clear Search</button>
+                    </div>
+            </header>
+            <table class="table" id="table">
+                
+                    <thead id="headings">
+                        <tr>
+                            <th onClick={sortEmployee}>Name</th>
+                            <th>Image</th>
+                            <th>Country</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {employees.map(employee => (
+                        <tr >   
+                            <td>{employee.firstName} {employee.lastName}</td>
+                            <td><img alt={employee.image} src={employee.image}/></td>
+                            <td>{employee.country}</td>
+                            <td>{employee.email}</td>
+                            <td>{employee.gender}</td>
+                        </tr>))}
+                </tbody>
+            </table>            
         </>     
         );  
 };
