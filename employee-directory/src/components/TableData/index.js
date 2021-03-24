@@ -4,9 +4,7 @@ import "./style.css";
 
 
 function TableData(){
-    const [employee, setEmployee] = useState({});
     const [employees, setEmployees] = useState([]);
-    const [employeeIndex, setEmployeeIndex] = useState(0)
     const [order,setOrder] = useState('desc'); 
     const inputRef = useRef()
     
@@ -78,7 +76,7 @@ function TableData(){
                             <th>Image</th>
                             <th>Country</th>
                             <th>Email</th>
-                            <th>Gender</th>
+                            <th>Cell Phone</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,7 +86,7 @@ function TableData(){
                             <td><img alt={employee.image} src={employee.image}/></td>
                             <td>{employee.country}</td>
                             <td>{employee.email}</td>
-                            <td>{employee.gender}</td>
+                            <td>{employee.cell}</td>
                         </tr>))}
                 </tbody>
             </table>            

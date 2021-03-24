@@ -14,7 +14,7 @@ export default {
                     firstName: employee.name.first,
                     lastName: employee.name.last,
                     email: employee.email,
-                    gender: employee.gender,
+                    cell: employee.cell,
                     image: employee.picture.thumbnail,
                     country: employee.location.country
                 };
