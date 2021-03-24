@@ -7,7 +7,7 @@ An application that provides searchable data on employees within an organization
 
 ## User Experience
 
-Users are presented with a full listing of the employees within an organization.  Data presented for each employee includes name, image, country, and gender. Users can sort employees by first name in both ascending and descending order. Users can also filter employees by country and feedback provides a summary of employees in that country.
+Users are presented with a full listing of the employees within an organization.  Data presented for each employee includes name, image, country, and cell phone. Users can sort employees by first name in both ascending and descending order. Users can also filter employees by country.  Search results provides a summary of employees in that country.
 
 ## Technology Used 
 
