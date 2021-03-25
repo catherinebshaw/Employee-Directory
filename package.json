@@ -1,6 +1,7 @@
 {
   "name": "employee-directory",
   "version": "0.1.0",
+  "engines": {"node":"v14.15.4"},
   "private": true,
   "homepage": "https://catherinebshaw.github.io",
   "dependencies": {
